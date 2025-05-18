@@ -1,0 +1,1 @@
+pyinstaller --add-data template.html:. --runtime-tmpdir deps main.py
