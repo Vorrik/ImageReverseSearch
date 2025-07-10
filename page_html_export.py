@@ -1,6 +1,7 @@
 from typing import List, Tuple
-from libs.lib_types import PairParseResult
+from pathlib import Path
 
+from libs.lib_types import PairParseResult
 from utils import resource_path
 
 
@@ -12,8 +13,8 @@ class PageHTMLExport:
 
     def save(self, pages: List[Tuple[str, PairParseResult]], output: str) -> None:
         table_rows = [(f'<tr><td>{i}</td>'
-                       f'<td><img src="{image_path}" width="100" height="100" alt=""/></td>'
-                       f'<td><img src="{page.image.url}" width="100" height="100" alt=""/></td>'
+                       f'<td class="img-column"><img src="{image_path}" alt=""/>{Path(image_path).name}</td>'
+                       f'<td class="img-column"><img src="{page.image.url}" alt=""/></td>'
                        f'<td>{page.page.title}</td>'
                        f'<td><a href="{page.page.url}">{page.page.url}</a></td></tr>')
                       for i, (image_path, page) in enumerate(pages)]
